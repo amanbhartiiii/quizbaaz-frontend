@@ -4,7 +4,7 @@ const LandingPage = () => {
   return (
     
     <div className="w-screen min-h-screen flex justify-between p-8">
-      <div className="flex-2/3 text-center">
+      <div className="flex-2/3 text-center md:pt-12">
         <div>
           <h2 className="text-5xl sm:text-7xl pb-5">
             Test Your <span className="text-blue-300">Knowledge</span>, Fuel
@@ -12,7 +12,7 @@ const LandingPage = () => {
           </h2>
         </div>
         <div className="lg:px-8">
-          <p className="max-w-3xl text-lg sm:text-xl">
+          <p className="max-w-3xl sm:text-xl">
             Our platform challenges you with questions on Java, Java Script, C,
             C ++, Python, and more, making learning both fun and effective.
             Compete with peers, track your progress, and climb the leaderboard

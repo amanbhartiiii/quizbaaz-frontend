@@ -2,28 +2,36 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
   return (
-    <nav className="w-screen bg-indigo-300 overflow-hidden sticky top-0">
-      <div className="flex justify-between items-center px-2 lg:px-20 py-3">
-        <div className="text-2xl px-6 font-bold">
-          quiZ<span className="">baaZ</span>
+    <nav className="w-screen flex justify-center  overflow-hidden sticky top-3 sm:top-5">
+      <div className=" bg-black/70 backdrop-blur-md w-[95%] flex justify-between items-center px-2 lg:px-20 py-3 rounded-lg border-1 border-blue-400">
+        <div className="flex items-center font-bold">
+          <div className="text-2xl md:hidden">
+            <GiHamburgerMenu></GiHamburgerMenu>
+          </div>
+          <div
+            className="text-2xl px-6 bg-gradient-to-r from-indigo-500 via-pink-500 to-purple-500
+  bg-clip-text text-transparent"
+          >
+            quiZ<span className="">baaZ</span>
+          </div>
         </div>
-        <ul className="space-x-10 font-bold hidden md:flex">
+        <ul className="text-white space-x-10 hidden md:flex">
           <li className="cursor-pointer hover:text-slate-500">Home</li>
           <li className="cursor-pointer hover:text-slate-500">Quiz</li>
           <li className="cursor-pointer hover:text-slate-500">Leaderboard</li>
           <li className="cursor-pointer hover:text-slate-500">Notes</li>
           <li className="cursor-pointer hover:text-slate-500">About</li>
         </ul>
-        <div className="font-semibold hidden md:block">
+        <div className="font-semibold flex">
           <button className="px-4 py-2 bg-indigo-300 border-2 border-green-950 rounded-md cursor-pointer hover:bg-green-950 hover:text-white">
             Login
           </button>
-          <button className="mx-1 px-4 py-2.5 bg-green-950 text-white rounded-md cursor-pointer hover:bg-green-800">
+          <button className="mx-1 px-4 py-2.5 bg-green-950 text-white rounded-md cursor-pointer hover:bg-green-800 hidden md:block">
             Signup
           </button>
         </div>
-        <div className="text-xl pt-3 font-bold md:hidden">
-          <GiHamburgerMenu></GiHamburgerMenu>
+        <div className="hidden">
+          <span className="bg-blue-400 text-white">A</span>
         </div>
       </div>
     </nav>

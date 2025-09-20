@@ -5,12 +5,9 @@ import CppImg from "../assets/cpp.png"
 import PythonImg from "../assets/py.png"
 
 const QuizContainer = ()=> {
-
-  const quizes = ['Java', 'Python', 'Java Script', 'C++', 'C']
-
   return (
-    <div className="bg-slate-400 w-screen flex-col pt-4">
-      <h3 className="text-center text-4xl font-[700] text-gray-800">Online Tests</h3>
+    <div className="bg-slate-400 w-screen flex-col pt-4" style={{background: "radial-gradient(80% 80% at 50% 20%, rgb(25, 61, 31), transparent 100%), rgb(0, 0, 0)"}}>
+      <h3 className="text-center text-4xl font-[700] text-white">Online Tests</h3>
       <div className="flex justify-center flex-wrap space-x-4 space-y-10 p-10">
         <QuizBox name='Java' imgSrc={JavaImg}/>
         <QuizBox name='Python' imgSrc={PythonImg}/>
