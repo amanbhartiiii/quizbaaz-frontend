@@ -5,8 +5,8 @@ import { IoMdClose } from "react-icons/io";
 const SignupPage = () => {
   return (
     <form action="" className="">
-      <div className="bg-transparent w-screen flex justify-center items-center fixed z-50">
-        <div className="bg-white h-full w-sm rounded-md">
+      <div className="bg-transparent h-screen w-screen grid place-items-center fixed z-50">
+        <div className="bg-white w-sm rounded-md">
           <div className="flex justify-end text-2xl pt-2 pr-2">
             <Link to="/">
             <button className="cursor-pointer">
