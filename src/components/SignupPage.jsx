@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 <IoMdClose />;
 
@@ -7,9 +8,11 @@ const SignupPage = () => {
       <div className="bg-transparent w-screen flex justify-center items-center fixed z-50">
         <div className="bg-white h-full w-sm rounded-md">
           <div className="flex justify-end text-2xl pt-2 pr-2">
+            <Link to="/">
             <button className="cursor-pointer">
               <IoMdClose />
             </button>
+            </Link>
           </div>
           <div className="text-center pb-4  border-b">
             <p className="text-2xl font-bold">SignUp</p>
@@ -52,7 +55,7 @@ const SignupPage = () => {
               SignUp
             </button>
             <p className="my-2">
-              Have an account: <a href="">Login</a>
+              Have an account: <a href="/login">Login</a>
             </p>
           </div>
         </div>

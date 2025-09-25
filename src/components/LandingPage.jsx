@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import QuizBaazImg from "../assets/quizbaaz.png"
 
 const LandingPage = () => {
@@ -25,7 +26,9 @@ const LandingPage = () => {
         <div className="flex justify-center">
 
           {/* After loged in this button will be hidden */}
+          <Link to="/signup">
           <button className="bg-green-950 text-white text-lg px-6 py-3 rounded-md mx-2 my-6 font-[600] hover:bg-green-700">SignUp</button>
+          </Link>
 
           {/* When user loged in then show this button to start quiz */}
           <button className="bg-amber-300 px-4 py-2.5 rounded-md mx-2 my-6 font-[600] hidden">Start Now</button>

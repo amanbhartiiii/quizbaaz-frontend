@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
@@ -23,12 +25,16 @@ const Navbar = () => {
           <li className="cursor-pointer hover:text-slate-500">About</li>
         </ul>
         <div className="font-semibold flex">
-          <button className="px-4 py-2 bg-indigo-300 border-2 border-green-950 rounded-md cursor-pointer hover:bg-green-950 hover:text-white">
-            Login
-          </button>
-          <button className="mx-1 px-4 py-2.5 bg-green-950 text-white rounded-md cursor-pointer hover:bg-green-800 hidden md:block">
-            Signup
-          </button>
+          <Link to="/login">
+            <button className="px-4 py-2 bg-indigo-300 border-2 border-green-950 rounded-md cursor-pointer hover:bg-green-950 hover:text-white">
+              Login
+            </button>
+          </Link>
+          <Link to="/signup">
+            <button className="mx-1 px-4 py-2.5 bg-green-950 text-white rounded-md cursor-pointer hover:bg-green-800 hidden md:block">
+              Signup
+            </button>
+          </Link>
         </div>
         <div className="hidden">
           <span className="bg-blue-400 text-white">A</span>
