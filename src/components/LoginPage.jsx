@@ -1,17 +1,31 @@
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
+import { useContext, useRef } from "react";
+import { AuthContext } from "../store/auth-provider";
 <IoMdClose />;
 
 const LoginPage = () => {
+  const { login } = useContext(AuthContext);
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    login(email, password);
+  };
+
   return (
-    <form action="" className="">
+    <form action="" className="" onSubmit={handleOnSubmit}>
       <div className="bg-transparent h-screen w-screen grid place-items-center fixed z-50">
         <div className="bg-white w-sm rounded-md">
           <div className="flex justify-end text-2xl pt-2 pr-2">
             <Link to="/">
-            <button className="cursor-pointer">
-              <IoMdClose />
-            </button>
+              <button className="cursor-pointer">
+                <IoMdClose />
+              </button>
             </Link>
           </div>
           <div className="text-center pb-4  border-b">
@@ -29,6 +43,7 @@ const LoginPage = () => {
                 type="email"
                 name="email"
                 id="email"
+                ref={emailRef}
               />
             </div>
             <div>
@@ -38,11 +53,15 @@ const LoginPage = () => {
                 type="password"
                 name="password"
                 id="password"
+                ref={passwordRef}
               />
             </div>
           </div>
           <div className="text-center py-5">
-            <button className="px-4 py-2.5 bg-green-950 text-white rounded-md cursor-pointer hover:bg-green-800">
+            <button
+              className="px-4 py-2.5 bg-green-950 text-white rounded-md cursor-pointer hover:bg-green-800"
+              type="submit"
+            >
               Login
             </button>
             <p className="my-2">
