@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import QuizBaazImg from "../assets/quizbaaz.png"
 
 const LandingPage = () => {
+
+  const isLogedIn = !!localStorage.getItem("user")
+
   return (
-    
     <div className="w-screen min-h-screen flex justify-between p-8">
       <div className="flex-2/3 text-center md:pt-12">
         <div>
@@ -24,22 +26,23 @@ const LandingPage = () => {
           </p>
         </div>
         <div className="flex justify-center">
-
-          {/* After loged in this button will be hidden */}
-          <Link to="/signup">
-          <button className="bg-green-950 text-white text-lg px-6 py-3 rounded-md mx-2 my-6 font-[600] hover:bg-green-700">SignUp</button>
-          </Link>
-
-          {/* When user loged in then show this button to start quiz */}
-          <button className="bg-amber-300 px-4 py-2.5 rounded-md mx-2 my-6 font-[600] hidden">Start Now</button>
+          {!isLogedIn ? (
+            /* After loged in this button will be hidden */
+            <Link to="/signup">
+              <button className="bg-green-950 text-white text-lg px-6 py-3 rounded-md mx-2 my-6 font-[600] hover:bg-green-700">
+                SignUp
+              </button>
+            </Link>
+          ) : (
+            // When user loged in then show this button to start quiz
+            <button className="bg-amber-300 px-4 py-2.5 rounded-md mx-2 my-6 font-[600] cursor-pointer">
+              Start Now
+            </button>
+          )}
         </div>
       </div>
       <div className="text-[200px] text-center hidden flex-1/3 md:block">
-        <img
-          className="w-full"
-          src={QuizBaazImg}
-          alt=""
-        />
+        <img className="w-full" src={QuizBaazImg} alt="" />
       </div>
     </div>
   );

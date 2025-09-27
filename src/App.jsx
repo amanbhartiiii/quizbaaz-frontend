@@ -7,11 +7,9 @@ import AuthProvider from "./store/auth-provider";
 function App() {
   return (
     <div>
-      <AuthProvider>
-        <Navbar />
-        <LandingPage />
-        <QuizContainer />
-      </AuthProvider>
+      <Navbar />
+      <LandingPage />
+      <QuizContainer />
     </div>
   );
 }

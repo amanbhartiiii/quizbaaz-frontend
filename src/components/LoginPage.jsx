@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { useContext, useRef } from "react";
 import { AuthContext } from "../store/auth-provider";
 <IoMdClose />;
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   const { login } = useContext(AuthContext);
 
   const emailRef = useRef();
@@ -15,6 +16,7 @@ const LoginPage = () => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     login(email, password);
+    navigate("/")
   };
 
   return (

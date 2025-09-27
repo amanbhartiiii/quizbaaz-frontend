@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
+  const isLogedIn = !!localStorage.getItem("user");
+
   return (
-    <nav className="w-screen flex justify-center  overflow-hidden sticky top-3 sm:top-5">
+    <nav className="h-[70px] w-screen flex justify-center  overflow-hidden sticky top-3 sm:top-5">
       <div className=" bg-black/70 backdrop-blur-md w-[95%] flex justify-between items-center px-2 lg:px-20 py-3 rounded-lg border-1 border-blue-400">
         <div className="flex items-center font-bold">
           <div className="text-2xl md:hidden">
@@ -24,21 +26,25 @@ const Navbar = () => {
           <li className="cursor-pointer hover:text-slate-500">Notes</li>
           <li className="cursor-pointer hover:text-slate-500">About</li>
         </ul>
-        <div className="font-semibold flex">
-          <Link to="/login">
-            <button className="px-4 py-2 bg-indigo-300 border-2 border-green-950 rounded-md cursor-pointer hover:bg-green-950 hover:text-white">
-              Login
-            </button>
-          </Link>
-          <Link to="/signup">
-            <button className="mx-1 px-4 py-2.5 bg-green-950 text-white rounded-md cursor-pointer hover:bg-green-800 hidden md:block">
-              Signup
-            </button>
-          </Link>
-        </div>
-        <div className="hidden">
-          <span className="bg-blue-400 text-white">A</span>
-        </div>
+
+        {!isLogedIn ? (
+          <div className="font-semibold flex">
+            <Link to="/login">
+              <button className="px-4 py-2 bg-indigo-300 border-2 border-green-950 rounded-md cursor-pointer hover:bg-green-950 hover:text-white">
+                Login
+              </button>
+            </Link>
+            <Link to="/signup">
+              <button className="mx-1 px-4 py-2.5 bg-green-950 text-white rounded-md cursor-pointer hover:bg-green-800 hidden md:block">
+                Signup
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div className="bg-[#014751] h-[40px] w-[40px] flex justify-center items-center rounded-[50%] cursor-pointer">
+            <span className="text-white text-xl">A</span>
+          </div>
+        )}
       </div>
     </nav>
   );

@@ -2,14 +2,12 @@ import { createContext, useState } from "react";
 
 export const AuthContext = createContext({
   user: {},
-  isLogedIn: false,
   login: () => {},
   signup: () => {},
 });
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [isLogedIn, setIsLogedIn] = useState(false);
 
   const login = (email, password) => {
     const loginData = {
@@ -25,31 +23,38 @@ const AuthProvider = ({ children }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setUser(data)
-        setIsLogedIn(true);
-      });
+        setUser(data);
+        localStorage.setItem("user", data);
+        console.log("Login Successfull");
+      })
+      .catch(err => {
+        console.error(err);
+      })
   };
 
   const signup = (name, email, password) => {
     const signupData = {
       name,
       email,
-      password
-    }
+      password,
+    };
 
     fetch("http://localhost:8080/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(signupData)
+      body: JSON.stringify(signupData),
     })
-    .then(res=> res.json())
-    .then(data=> console.log(data))
+      .then((res) => res.json())
+      .then((data) => {
+        login(data.email, data.password);
+        console.log("Signup Successfull");
+      });
   };
 
   return (
-    <AuthContext.Provider value={{ user, isLogedIn, login, signup }}>
+    <AuthContext.Provider value={{ user, login, signup }}>
       {children}
     </AuthContext.Provider>
   );
