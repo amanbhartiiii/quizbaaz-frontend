@@ -1,4 +1,5 @@
 import "./App.css";
+import Footer from "./components/Footer";
 import LandingPage from "./components/LandingPage";
 import Navbar from "./components/Navbar";
 import QuizContainer from "./components/QuizContainer";
@@ -10,6 +11,7 @@ function App() {
       <Navbar />
       <LandingPage />
       <QuizContainer />
+      <Footer />
     </div>
   );
 }
