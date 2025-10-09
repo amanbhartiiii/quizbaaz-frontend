@@ -1,16 +1,19 @@
 import { Link } from "react-router-dom";
 
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useState } from "react";
 
 const Navbar = () => {
   const isLogedIn = !!localStorage.getItem("user");
+
+  const [openSidebar, setOpenSidebar] = useState(false);
 
   return (
     <nav className="h-[70px] w-screen flex justify-center  overflow-hidden sticky top-3 sm:top-5">
       <div className=" bg-black/70 backdrop-blur-md w-[95%] flex justify-between items-center px-2 lg:px-20 py-3 rounded-lg border-1 border-blue-400">
         <div className="flex items-center font-bold">
           <div className="text-2xl md:hidden">
-            <GiHamburgerMenu></GiHamburgerMenu>
+            <GiHamburgerMenu onClick={()=> setOpenSidebar(!openSidebar)}></GiHamburgerMenu>
           </div>
           <div
             className="text-2xl px-6 bg-gradient-to-r from-indigo-500 via-pink-500 to-purple-500
