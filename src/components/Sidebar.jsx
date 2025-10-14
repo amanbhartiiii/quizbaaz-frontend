@@ -1,11 +1,11 @@
 import { IoMdClose } from "react-icons/io";
 
-const Sidebar = () => {
+const Sidebar = ({openSidebar, setOpenSidebar}) => {
   return (
-    <div className=" bg-black/70 backdrop-blur-md h-screen w-screen fixed top-0 z-50 pt-3 text-white">
+    <div className={`bg-black/70 backdrop-blur-md h-screen w-screen fixed top-0 z-50 pt-3 text-white transition-transform duration-300 ease-linear ${openSidebar ? "translate-x-0" : "-translate-x-full"}`}>
       <div className="flex justify-between border-b p-2">
         <div className="text-xl">Aman Bharti</div>
-        <button className="text-2xl">
+        <button className="text-2xl" onClick={()=>setOpenSidebar(!openSidebar)}>
           <IoMdClose />
         </button>
       </div>
