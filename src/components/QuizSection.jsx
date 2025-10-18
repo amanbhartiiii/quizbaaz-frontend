@@ -10,7 +10,7 @@ const QuizSection = () => {
 
   const [selectedOption, setSelectedOption] = useState();
   const [score, setScore] = useState(0);
-  const [isFinished, setIsFinished] = useState(false)
+  const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:9090/question/?subject=${subject}`)
@@ -27,7 +27,7 @@ const QuizSection = () => {
     var newScore = score;
 
     // Checking option is correct or not.
-    console.log("Question ", currentIndex, " cheking...")
+    console.log("Question ", currentIndex, " cheking...");
     if (selectedOption && selectedOption.correct) {
       newScore = score + 1;
       setScore(newScore);
@@ -35,10 +35,10 @@ const QuizSection = () => {
 
     // Moving to the next question
     if (currentIndex < questions.length - 1) {
-      setCurrentIndex(prev=> prev + 1);
-      setSelectedOption(null)
+      setCurrentIndex((prev) => prev + 1);
+      setSelectedOption(null);
     } else {
-      setIsFinished(true)
+      setIsFinished(true);
     }
   };
 
@@ -47,10 +47,8 @@ const QuizSection = () => {
     return <p>Loading questions...</p>;
   }
 
-  if(isFinished) {
-    return (
-      <Result score={score} total={questions.length} />
-    )
+  if (isFinished) {
+    return <Result score={score} total={questions.length} />;
   }
 
   const currentQuestion = questions[currentIndex];
@@ -84,7 +82,11 @@ const QuizSection = () => {
             {currentQuestion.options.map((option) => (
               <li
                 key={option.id}
-                className="bg-slate-800/50 border-[2px] border-slate-700 py-3 pl-4 rounded-md shadow-xs  shadow-black transition-all duration-200 hover:shadow-md hover:bg-sky-600 hover:border-sky-400 hover:scale-103 cursor-pointer capitalize"
+                className={`border-[2px] py-3 pl-4 rounded-md shadow-xs shadow-black transition-all duration-200 hover:shadow-md hover:bg-sky-600 hover:border-sky-400 hover:scale-103 cursor-pointer capitalize ${
+                  selectedOption === option
+                    ? "bg-sky-600 border-sky-400 scale-103 "
+                    : "bg-slate-800/50 border-slate-700"
+                }`}
                 onClick={() => setSelectedOption(option)}
               >
                 {option.text}
