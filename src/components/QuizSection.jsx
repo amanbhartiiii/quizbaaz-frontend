@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Result from "./Result";
 
 const QuizSection = () => {
   const { subject } = useParams();
@@ -9,6 +10,7 @@ const QuizSection = () => {
 
   const [selectedOption, setSelectedOption] = useState();
   const [score, setScore] = useState(0);
+  const [isFinished, setIsFinished] = useState(false)
 
   useEffect(() => {
     fetch(`http://localhost:9090/question/?subject=${subject}`)
@@ -34,14 +36,21 @@ const QuizSection = () => {
     // Moving to the next question
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(prev=> prev + 1);
+      setSelectedOption(null)
     } else {
-      alert(`🎉 You’ve scored ${score} out of ${questions.length}!`);
+      setIsFinished(true)
     }
   };
 
   // ✅ If data not yet loaded
   if (questions.length === 0) {
     return <p>Loading questions...</p>;
+  }
+
+  if(isFinished) {
+    return (
+      <Result score={score} total={questions.length} />
+    )
   }
 
   const currentQuestion = questions[currentIndex];
