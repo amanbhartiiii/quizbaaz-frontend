@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
       email,
       password,
     };
-    fetch("http://localhost:8080/user/login", {
+    fetch("http://localhost:9090/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
       password,
     };
 
-    fetch("http://localhost:8080/user/signup", {
+    fetch("http://localhost:9090/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
